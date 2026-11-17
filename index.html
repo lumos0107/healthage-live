@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>HealthAge · CO-SHOW B-03</title>
+<style>
+:root{
+  --green:#0D7B57;  /* 주요색 (부스 픽토그램 규칙) */
+  --gray:#C6C8C7;   /* 보조색 */
+  --ink:#1F2523;    /* 글자 */
+  --sub:#5C6361;    /* 보조 글자 */
+  --bg:#FFFFFF;     /* 바탕 */
+  --red:#D9534F;    /* 위험 · LIVE */
+  --tint:#E8F3EF;   /* 연초록 면 */
+  --line:#E4E6E5;   /* 구분선 */
+}
+html,body{margin:0;height:100%;background:var(--bg);overflow:hidden;overscroll-behavior:none;touch-action:none}
+body{font-family:Pretendard,"Malgun Gothic",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;
+  word-break:keep-all;font-variant-ligatures:none;cursor:pointer}
+
+/* ── 16:9 무대: 1920×1080 기준으로 그리고 화면에 맞춰 줄임 ── */
+#deck{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;overflow:hidden;background:var(--bg)}
+.slide{position:absolute;inset:0;background:var(--bg);padding:0 140px;box-sizing:border-box;
+  opacity:0;visibility:hidden;transform:translateX(28px);
+  transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1),visibility .45s}
+.slide.on{opacity:1;visibility:visible;transform:none}
+
+/* 늘 보이는 것: LIVE · 쪽 번호 · 진행 막대 · 일시정지 표시 */
+.live{position:absolute;right:56px;top:44px;display:flex;align-items:center;gap:12px;padding:10px 22px 10px 18px;
+  border-radius:40px;background:var(--red);color:#fff;font-size:24px;font-weight:700;letter-spacing:1px;z-index:5}
+.live i{width:12px;height:12px;border-radius:50%;background:#fff;animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.pageno{position:absolute;right:56px;bottom:40px;padding:8px 20px;border-radius:30px;background:var(--ink);color:#fff;
+  font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;z-index:5}
+.progress{position:absolute;left:0;right:0;bottom:0;height:10px;background:var(--line);z-index:5}
+.progress>i{display:block;height:100%;width:0;background:var(--green)}
+.progress>i.run{animation:prog linear forwards;animation-duration:var(--dur,10s)}
+@keyframes prog{from{width:0}to{width:100%}}
+body.paused .progress>i{animation-play-state:paused}
+#pausemark{position:absolute;left:40px;top:40px;display:none;align-items:center;gap:12px;padding:10px 22px;border-radius:40px;
+  background:var(--ink);color:#fff;font-size:24px;font-weight:700;z-index:6}
+body.paused #pausemark{display:flex}
+
+/* ── 등장 움직임 (중간보고_1112.html에서 가져옴) ── */
+[data-a]{opacity:0}
+.slide [data-a="up"]{transform:translateY(26px)}
+.slide [data-a="pop"]{transform:scale(.4)}
+.slide [data-a="left"]{transform:translateX(-46px)}
+svg [data-a]{transform-box:fill-box;transform-origin:center}
+.slide.on [data-a]{animation:aUp .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d,0) * 1s)}
+.slide.on [data-a="fade"]{animation-name:aFade}
+.slide.on [data-a="pop"]{animation-name:aPop;animation-duration:.5s}
+@keyframes aUp{to{opacity:1;transform:none}}
+@keyframes aFade{to{opacity:1}}
+@keyframes aPop{70%{opacity:1;transform:scale(1.08)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide [data-a]{opacity:1 !important;transform:none !important;animation:none !important}}
+
+/* ── 슬라이드 공통 ── */
+.ttl{position:absolute;left:140px;top:120px;right:300px;margin:0;font-size:72px;font-weight:700;letter-spacing:-1.5px;line-height:1.2}
+</style>
+</head>
+<body>
+<div id="deck">
+
+<section class="slide" data-sec="8"><h1 class="ttl">HealthAge</h1></section>
+<section class="slide" data-sec="10"><h2 class="ttl">검진 결과는 서랍으로 갑니다</h2></section>
+<section class="slide" data-sec="10"><h2 class="ttl">수치만 있고 설명이 없습니다</h2></section>
+<section class="slide" data-sec="10"><h2 class="ttl">결과지가 알려 주지 않는 세 가지</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">사진 한 장이면 됩니다</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">찍고, 확인하고, 저장합니다</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">같은 나이·성별 또래 중 어디쯤일까</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">해마다 어떻게 바뀌었나</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">결과지에 없는 지표 22종</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">약 덕분에 정상인 수치는 따로 봅니다</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">다음 검진까지 무엇부터</h2></section>
+<section class="slide" data-sec="12"><h2 class="ttl">근거로 판정합니다</h2></section>
+<section class="slide" data-sec="10"><h2 class="ttl">옆 태블릿에서 직접 해 보세요</h2></section>
+
+<div class="live"><i></i>LIVE</div>
+<div class="pageno">1 / 13</div>
+<div class="progress"><i></i></div>
+<div id="pausemark">일시정지</div>
+</div>
+
+<script>
+/* ── 넘김 엔진: 누르면 넘김 · 자동 넘김 · 끝나면 처음으로 ── */
+(function () {
+  const deckEl = document.getElementById('deck');
+  const slides = [...document.querySelectorAll('.slide')];
+  const N = slides.length;
+  const q = new URLSearchParams(location.search);
+  const speed = Math.max(parseFloat(q.get('speed')) || 1, 0.001);   /* 시험용: 모든 초를 speed로 나눔 */
+  const bar = document.querySelector('.progress>i');
+  const pageno = document.querySelector('.pageno');
+  const LONG_MS = 2000, CORNER = 120;                                /* 왼쪽 위 길게 누르기 = 일시정지 */
+  let cur = 0, paused = false, timer = null;
+
+  function fit() {
+    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    deckEl.style.transform = `translate(-50%,-50%) scale(${s})`;
+  }
+  const durMs = i => (+slides[i].dataset.sec || 10) * 1000 / speed;
+  function restartBar() {
+    bar.classList.remove('run'); void bar.offsetWidth;
+    bar.style.setProperty('--dur', durMs(cur) + 'ms'); bar.classList.add('run');
+  }
+  function arm() {
+    clearTimeout(timer); timer = null;
+    restartBar();
+    if (!paused && document.visibilityState !== 'hidden') timer = setTimeout(next, durMs(cur));
+  }
+  function show(i) {
+    cur = ((i % N) + N) % N;
+    slides.forEach((el, k) => el.classList.toggle('on', k === cur));
+    pageno.textContent = `${cur + 1} / ${N}`;
+    arm();
+  }
+  function next() { show(cur + 1); }
+  function prev() { show(cur - 1); }
+  function togglePause() {
+    paused = !paused;
+    document.body.classList.toggle('paused', paused);
+    if (paused) { clearTimeout(timer); timer = null; } else arm();
+  }
+
+  /* 화면 꺼짐 막기 · 전체 화면 */
+  let lock = null;
+  async function wake() {
+    try {
+      if ('wakeLock' in navigator && document.visibilityState === 'visible' && !lock) {
+        lock = await navigator.wakeLock.request('screen');
+        lock.addEventListener('release', () => { lock = null; });
+      }
+    } catch (e) { /* 지원 안 하면 태블릿 설정(화면 자동 꺼짐 최대)에 맡김 */ }
+  }
+  function goFull() {
+    const app = matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches;
+    if (!app && !document.fullscreenElement && document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    }
+  }
+
+  /* 누르기: 왼쪽 1/4 이전, 나머지 다음. 왼쪽 위 모서리 2초 = 일시정지 */
+  let longTimer = null, longFired = false;
+  addEventListener('pointerdown', e => {
+    longFired = false; clearTimeout(longTimer);
+    if (e.isPrimary && e.clientX < CORNER && e.clientY < CORNER) {
+      longTimer = setTimeout(() => { longFired = true; togglePause(); }, LONG_MS);
+    }
+  });
+  addEventListener('pointerup', e => {
+    clearTimeout(longTimer);
+    if (longFired) { longFired = false; return; }
+    if (!e.isPrimary || e.button > 0) return;
+    goFull(); wake();
+    e.clientX < innerWidth / 4 ? prev() : next();
+  });
+  addEventListener('pointercancel', () => clearTimeout(longTimer));
+  addEventListener('contextmenu', e => e.preventDefault());
+  addEventListener('dblclick', e => e.preventDefault());
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === 'p' || e.key === 'P') togglePause();
+    else if (e.key === 'f' || e.key === 'F') document.fullscreenElement ? document.exitFullscreen() : goFull();
+    else if (e.key === 'Home') show(0);
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') { wake(); arm(); }
+    else { clearTimeout(timer); timer = null; }
+  });
+  addEventListener('resize', fit);
+
+  window.deck = {
+    get cur() { return cur; }, get paused() { return paused; },
+    show, next, prev, togglePause,
+  };
+  fit();
+  show(Math.max((parseInt(location.hash.slice(1)) || 1) - 1, 0));   /* #5 = 5장부터 (캡처용) */
+  wake();
+})();
+</script>
+
+<script>
+/* ── 움직임: 장이 열릴 때 숫자를 0부터 올리고 slideon 알림 ── */
+(function () {
+  const nums = [...document.querySelectorAll('[data-n]')].map(el => ({
+    el, t: parseFloat(el.dataset.n), dec: +(el.dataset.dec || 0), sl: el.closest('.slide'),
+    d: parseFloat((el.closest('[data-a]') || el).style.getPropertyValue('--d')) || 0,
+  }));
+  function run(sl) {
+    nums.filter(n => n.sl === sl).forEach(n => {
+      n.el.textContent = (0).toFixed(n.dec);
+      const t0 = performance.now() + n.d * 1000 + 150, dur = 1100;
+      const step = now => {
+        const k = Math.min(Math.max((now - t0) / dur, 0), 1);
+        n.el.textContent = (n.t * (1 - Math.pow(1 - k, 3))).toLocaleString('en-US', { minimumFractionDigits: n.dec, maximumFractionDigits: n.dec });
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+    document.dispatchEvent(new CustomEvent('slideon', { detail: sl }));
+  }
+  const mo = new MutationObserver(ms => ms.forEach(m => { if (m.target.classList.contains('on')) run(m.target); }));
+  document.querySelectorAll('.slide').forEach(sl => mo.observe(sl, { attributes: true, attributeFilter: ['class'] }));
+  const first = document.querySelector('.slide.on');
+  if (first) run(first);
+})();
+</script>
+</body>
+</html>
