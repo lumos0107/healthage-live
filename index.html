@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="only light">
-<meta name="build" content="fd8dccd8">
+<meta name="build" content="e734484d">
 <meta name="theme-color" content="#126E4C">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <title>HealthAge · CO-SHOW B-03</title>
 <style>
 /* Pretendard (SIL Open Font License 1.1) · 슬라이드에 쓰인 글자만 잘라 넣음: tools/subset_font.py */
-@font-face{font-family:'Pretendard';font-style:normal;font-weight:400;font-display:block;src:url(fonts/Pretendard-400.440bc1fe.woff2) format('woff2')}
-@font-face{font-family:'Pretendard';font-style:normal;font-weight:700;font-display:block;src:url(fonts/Pretendard-700.425bb8fe.woff2) format('woff2')}
+@font-face{font-family:'Pretendard';font-style:normal;font-weight:400;font-display:block;src:url(fonts/Pretendard-400.6f7ef834.woff2) format('woff2')}
+@font-face{font-family:'Pretendard';font-style:normal;font-weight:700;font-display:block;src:url(fonts/Pretendard-700.217e6df5.woff2) format('woff2')}
 :root{
   --green:#126E4C;  /* 주요색 (부스 벽면 그래픽) */
   --ink:#042816;    /* 제목·글자 */
@@ -571,7 +571,7 @@ h1,h2,.lead,.pts li span,.col p,.step p,.foot2,.small-note,.cap{text-wrap:balanc
 
   /* 뒤로 가기 막기: 누를 때마다(사용자 동작) 기록을 하나 쌓아, 뒤로 버튼이 앱을 닫지 않고 그 기록만 지우게 함 */
   function guardBack() {
-    if (!(history.state && history.state.guard)) history.pushState({ guard: true }, '');
+    try { if (!(history.state && history.state.guard)) history.pushState({ guard: true }, ''); } catch (e) { /* 파일로 열면 막힐 수 있음 */ }
   }
 
   /* 누르기: 왼쪽 1/4 이전, 나머지 다음. 밀면 미는 방향. 왼쪽 위 모서리 2초 = 일시정지 */
