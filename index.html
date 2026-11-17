@@ -9,6 +9,9 @@
 <link rel="icon" href="icon-192.png">
 <title>HealthAge · CO-SHOW B-03</title>
 <style>
+/* Pretendard (SIL Open Font License 1.1) · 슬라이드에 쓰인 글자만 잘라 넣음: tools/subset_font.py */
+@font-face{font-family:'Pretendard';font-style:normal;font-weight:400;font-display:block;src:url(fonts/Pretendard-subset-400.woff2) format('woff2')}
+@font-face{font-family:'Pretendard';font-style:normal;font-weight:700;font-display:block;src:url(fonts/Pretendard-subset-700.woff2) format('woff2')}
 :root{
   --green:#0D7B57;  /* 주요색 (부스 픽토그램 규칙) */
   --gray:#C6C8C7;   /* 보조색 */
@@ -59,28 +62,321 @@ svg [data-a]{transform-box:fill-box;transform-origin:center}
 @keyframes aUp{to{opacity:1;transform:none}}
 @keyframes aFade{to{opacity:1}}
 @keyframes aPop{70%{opacity:1;transform:scale(1.08)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.slide [data-a]{opacity:1 !important;transform:none !important;animation:none !important}}
+@media (prefers-reduced-motion:reduce){
+  .slide [data-a]{opacity:1 !important;transform:none !important;animation:none !important}
+  .slide{transform:none !important;transition:none !important}
+  .bar .fl{transition:none !important}
+}
 
 /* ── 슬라이드 공통 ── */
-.ttl{position:absolute;left:140px;top:120px;right:300px;margin:0;font-size:72px;font-weight:700;letter-spacing:-1.5px;line-height:1.2}
+h1,h2{margin:0;font-weight:700;letter-spacing:-1.5px;line-height:1.22}
+h2{font-size:72px}
+.kick{font-size:36px;font-weight:700;color:var(--green);margin:0 0 20px;letter-spacing:-.3px}
+.lead{font-size:40px;color:var(--sub);margin:24px 0 0;line-height:1.45}
+.src{position:absolute;left:140px;bottom:44px;font-size:24px;color:var(--sub)}
+.ic{display:inline-flex;flex:none}
+.ic svg{width:100%;height:100%;stroke-width:1.8}
+b.g{color:var(--green)}
+h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:balance}
+
+/* 위에 제목, 아래 내용 */
+.hd{position:absolute;left:140px;top:110px;right:340px}
+.bd{position:absolute;left:140px;right:140px;top:420px;bottom:120px;display:flex;flex-direction:column;justify-content:center}
+
+/* 왼쪽 글, 오른쪽 태블릿 화면 */
+.sp{position:absolute;left:140px;right:120px;top:96px;bottom:96px;display:flex;align-items:center;gap:90px}
+.sp .tx{flex:1;min-width:0}
+.pts{list-style:none;margin:48px 0 0;padding:0;display:flex;flex-direction:column;gap:28px}
+.pts li{display:flex;gap:22px;font-size:40px;line-height:1.42}
+.pts .ic{width:50px;height:50px;color:var(--green);margin-top:3px}
+.tab{flex:none;background:#1F2523;border-radius:46px;padding:18px;box-shadow:0 26px 60px rgba(31,37,35,.16)}
+.tab img{display:block;border-radius:28px}
+.tab.tall img{height:830px;width:auto}
+.tab.wide img{width:700px;height:auto}
+
+/* 1장 표지 */
+.cv .org{font-size:36px;color:var(--sub);font-weight:700;margin:0 0 30px}
+.cv h1{font-size:168px;color:var(--green);letter-spacing:-5px;line-height:1}
+.cv .kor{font-size:48px;font-weight:700;color:var(--ink);margin:18px 0 0}
+.cv .tag{font-size:56px;font-weight:700;margin:56px 0 0;line-height:1.3}
+.cv .team{font-size:36px;color:var(--sub);margin:56px 0 0;line-height:1.55}
+.chip{display:inline-block;margin-top:28px;padding:10px 30px;border-radius:40px;background:var(--tint);color:var(--green);font-size:36px;font-weight:700}
+
+/* 2·3장 막대 */
+.bars{display:flex;flex-direction:column;gap:64px}
+.bar .lb{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;font-size:46px;font-weight:700}
+.bar .v{font-size:96px;color:var(--green);font-variant-numeric:tabular-nums;letter-spacing:-2px}
+.bar .v small{font-size:56px;margin-left:4px}
+.bar .tr{height:52px;background:#EEF1F0;border-radius:26px;overflow:hidden}
+.bar .fl{height:100%;width:0;background:var(--green);border-radius:26px;transition:width 1.4s cubic-bezier(.2,.7,.2,1) .35s}
+.slide.on .bar .fl{width:var(--w)}
+.bar.alt .v{color:var(--ink)}
+.bar.alt .fl{background:var(--gray)}
+.note{font-size:44px;font-weight:700;margin-top:70px}
+
+/* 4장 카드 3개 · 12장 카드 4개 */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.cards.c2{grid-template-columns:repeat(2,1fr);gap:32px 40px}
+.card{background:#F5F7F6;border-radius:32px;padding:48px 46px}
+.card .ic{width:72px;height:72px;color:var(--green)}
+.card h3{margin:26px 0 14px;font-size:48px;font-weight:700;letter-spacing:-.8px}
+.card p{margin:0;font-size:36px;line-height:1.45;color:var(--sub)}
+.cards.c2 .card{display:flex;gap:34px;align-items:flex-start;padding:40px 44px}
+.cards.c2 .card h3{margin:0 0 10px;font-size:44px}
+.foot2{margin-top:48px;font-size:38px;line-height:1.5}
+.foot2 .sub{color:var(--sub);font-size:36px}
+
+/* 5·13장 단계 */
+.steps{display:flex;align-items:stretch;gap:20px}
+.step{flex:1;background:#F5F7F6;border-radius:32px;padding:48px 36px;text-align:center}
+.step .no{display:inline-flex;width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;font-size:36px;font-weight:700;align-items:center;justify-content:center}
+.step .ic{display:flex;width:96px;height:96px;margin:28px auto 0;color:var(--green)}
+.step h3{margin:26px 0 12px;font-size:52px;font-weight:700}
+.step p{margin:0;font-size:36px;line-height:1.42;color:var(--sub)}
+.arr{flex:none;align-self:center;width:48px;height:48px;color:var(--gray)}
+.steps.sm .step{padding:40px 30px}
+.steps.sm .step h3{font-size:44px;margin-top:22px}
+
+/* 7장 큰 숫자 */
+.big{margin-top:52px}
+.big .n{font-size:132px;font-weight:700;color:var(--green);letter-spacing:-4px;line-height:1;font-variant-numeric:tabular-nums}
+.big .n small{font-size:64px;letter-spacing:-1px;margin-left:6px}
+.big .u{font-size:38px;color:var(--sub);margin-top:16px}
+
+/* 9장 지표 이름표 */
+.chips{display:flex;flex-wrap:wrap;gap:18px;margin-top:44px}
+.chips span{padding:14px 28px;border-radius:40px;background:var(--tint);color:var(--green);font-size:36px;font-weight:700}
+
+/* 10장 예시 */
+.ex{margin-top:44px;border:3px solid var(--line);border-radius:32px;padding:36px 44px}
+.ex .q{font-size:38px;color:var(--sub)}
+.ex .bp{font-size:96px;font-weight:700;letter-spacing:-2px;margin:6px 0 22px;font-variant-numeric:tabular-nums}
+.ex .bp small{font-size:44px;color:var(--sub);margin-left:10px;letter-spacing:0}
+.ex .row{display:flex;gap:24px;align-items:baseline;font-size:38px;padding:16px 0;border-top:2px solid var(--line)}
+.ex .row .k{flex:none;width:200px;color:var(--sub)}
+.ex .row.hl .v{color:var(--red);font-weight:700}
+
+/* 11장 순서 */
+.rank{list-style:none;margin:44px 0 0;padding:0;display:flex;flex-direction:column;gap:20px}
+.rank li{display:flex;align-items:center;gap:26px;font-size:44px;font-weight:700}
+.rank .no{flex:none;display:inline-flex;width:66px;height:66px;border-radius:50%;background:var(--green);color:#fff;font-size:38px;align-items:center;justify-content:center}
+.rank li:nth-child(n+3) .no{background:var(--gray);color:var(--ink)}
+.small-note{font-size:36px;color:var(--sub);margin-top:36px;line-height:1.45}
 </style>
 </head>
 <body>
 <div id="deck">
 
-<section class="slide" data-sec="8"><h1 class="ttl">HealthAge</h1></section>
-<section class="slide" data-sec="10"><h2 class="ttl">검진 결과는 서랍으로 갑니다</h2></section>
-<section class="slide" data-sec="10"><h2 class="ttl">수치만 있고 설명이 없습니다</h2></section>
-<section class="slide" data-sec="10"><h2 class="ttl">결과지가 알려 주지 않는 세 가지</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">사진 한 장이면 됩니다</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">찍고, 확인하고, 저장합니다</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">같은 나이·성별 또래 중 어디쯤일까</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">해마다 어떻게 바뀌었나</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">결과지에 없는 지표 22종</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">약 덕분에 정상인 수치는 따로 봅니다</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">다음 검진까지 무엇부터</h2></section>
-<section class="slide" data-sec="12"><h2 class="ttl">근거로 판정합니다</h2></section>
-<section class="slide" data-sec="10"><h2 class="ttl">옆 태블릿에서 직접 해 보세요</h2></section>
+<!-- 1 표지 -->
+<section class="slide" data-sec="8">
+  <div class="sp cv">
+    <div class="tx">
+      <p class="org">사물인터넷 혁신융합대학사업단</p>
+      <h1>HealthAge</h1>
+      <p class="kor">헬스에이지</p>
+      <p class="tag">사진 한 장으로 읽는<br>건강검진 아카이브</p>
+      <p class="team">제주대학교 컴퓨터공학전공 코드짜는 한라봉<br>강승준 · 고강혁 · 양인권</p>
+      <span class="chip">부스 B-03</span>
+    </div>
+    <div class="tab tall" data-a="fade" style="--d:.3"><img src="img/app-home.webp" alt="헬스에이지 홈 화면"></div>
+  </div>
+</section>
+
+<!-- 2 문제 -->
+<section class="slide" data-sec="10">
+  <div class="hd">
+    <p class="kick">문제</p>
+    <h2>검진 결과는 서랍으로 갑니다</h2>
+    <p class="lead">건강검진을 받아 본 64명에게 결과지를 어떻게 두는지 물었습니다.</p>
+  </div>
+  <div class="bd">
+    <div class="bars">
+      <div class="bar"><div class="lb"><span>종이로만 두거나 관리하지 않아요</span><span class="v"><span data-n="84">84</span><small>%</small></span></div><div class="tr"><div class="fl" style="--w:84%"></div></div></div>
+      <div class="bar alt"><div class="lb"><span>결과지를 다시 읽지 않아요</span><span class="v"><span data-n="44">44</span><small>%</small></span></div><div class="tr"><div class="fl" style="--w:44%"></div></div></div>
+    </div>
+  </div>
+  <p class="src">출처: 일반인 설문(2026), 검진 경험자 64명</p>
+</section>
+
+<!-- 3 이유 -->
+<section class="slide" data-sec="10">
+  <div class="hd">
+    <p class="kick">문제</p>
+    <h2>수치만 있고 설명이 없습니다</h2>
+    <p class="lead">결과지를 그대로 두는 이유를 물었습니다. (62명, 복수 응답)</p>
+  </div>
+  <div class="bd">
+    <div class="bars">
+      <div class="bar"><div class="lb"><span>수치만 있고 설명이 없다</span><span class="v"><span data-n="55">55</span><small>%</small></span></div><div class="tr"><div class="fl" style="--w:55%"></div></div></div>
+      <div class="bar alt"><div class="lb"><span>어떤 항목이 중요한지 모른다</span><span class="v"><span data-n="47">47</span><small>%</small></span></div><div class="tr"><div class="fl" style="--w:47%"></div></div></div>
+    </div>
+  </div>
+  <p class="src">출처: 일반인 설문(2026), 응답자 62명</p>
+</section>
+
+<!-- 4 결과지의 빈칸 -->
+<section class="slide" data-sec="10">
+  <div class="hd">
+    <p class="kick">문제</p>
+    <h2>결과지가 알려 주지 않는 세 가지</h2>
+  </div>
+  <div class="bd" style="top:360px">
+    <div class="cards">
+      <div class="card"><span class="ic" data-i="trending-up"></span><h3>작년과 비교</h3><p>올해 값만 적혀 있어 좋아졌는지 나빠졌는지 알기 어렵습니다.</p></div>
+      <div class="card"><span class="ic" data-i="users"></span><h3>또래 속 내 위치</h3><p>같은 나이·성별 사이에서 내가 어디쯤인지 알 수 없습니다.</p></div>
+      <div class="card"><span class="ic" data-i="report-search"></span><h3>계산해야 나오는 지표</h3><p>여러 수치를 묶어 계산해야 보이는 값은 적혀 있지 않습니다.</p></div>
+    </div>
+    <p class="note">헬스에이지는 이 세 가지를 <b class="g">자동으로 더합니다.</b></p>
+  </div>
+</section>
+
+<!-- 5 네 단계 -->
+<section class="slide" data-sec="12">
+  <div class="hd">
+    <p class="kick">해결</p>
+    <h2>사진 한 장이면 됩니다</h2>
+  </div>
+  <div class="bd" style="top:380px">
+    <div class="steps">
+      <div class="step"><span class="no">1</span><span class="ic" data-i="camera"></span><h3>촬영</h3><p>결과지를<br>사진으로 찍습니다</p></div>
+      <span class="arr ic" data-i="chevron-right"></span>
+      <div class="step"><span class="no">2</span><span class="ic" data-i="list-check"></span><h3>확인</h3><p>읽은 값을 보고<br>틀린 곳을 고칩니다</p></div>
+      <span class="arr ic" data-i="chevron-right"></span>
+      <div class="step"><span class="no">3</span><span class="ic" data-i="report-search"></span><h3>분석</h3><p>또래 비교, 연도별 변화,<br>숨은 지표를 봅니다</p></div>
+      <span class="arr ic" data-i="chevron-right"></span>
+      <div class="step"><span class="no">4</span><span class="ic" data-i="flag"></span><h3>행동</h3><p>다음 검진까지<br>챙길 일을 알려 줍니다</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 촬영·확인 -->
+<section class="slide" data-sec="12">
+  <div class="sp">
+    <div class="tx">
+      <p class="kick">1 촬영 · 2 확인</p>
+      <h2>찍고, 확인하고,<br>저장합니다</h2>
+      <ul class="pts">
+        <li><span class="ic" data-i="camera"></span><span>비전 AI가 측정 16항목과 생활습관 2항목을 읽습니다.</span></li>
+        <li><span class="ic" data-i="list-check"></span><span>읽은 값은 직접 확인하고 고친 뒤 저장합니다.</span></li>
+        <li><span class="ic" data-i="pill"></span><span>심평원 「내가 먹는 약! 한눈에」 복약 기록도 불러옵니다.</span></li>
+      </ul>
+    </div>
+    <div class="tab tall" data-a="fade" style="--d:.3"><img src="img/app-upload.webp" alt="결과지 업로드 확인 화면"></div>
+  </div>
+</section>
+
+<!-- 7 또래 비교 -->
+<section class="slide" data-sec="12">
+  <div class="sp">
+    <div class="tx">
+      <p class="kick">3 분석 · 또래 비교</p>
+      <h2>같은 나이·성별<br>또래와 비교합니다</h2>
+      <div class="big"><div class="n"><span data-n="1596">1,596</span><small>만 건</small></div><div class="u">국민건강보험공단 검진 표본 (2009~2024년)</div></div>
+      <p class="lead">내 수치가 또래 100명 중 몇 등쯤인지 보여 줍니다.</p>
+    </div>
+    <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-peer.webp" alt="같은 또래 비교 화면"></div>
+  </div>
+</section>
+
+<!-- 8 연도별 변화 -->
+<section class="slide" data-sec="12">
+  <div class="sp">
+    <div class="tx">
+      <p class="kick">3 분석 · 연도별 변화</p>
+      <h2>해마다 바뀐 구간을<br>보여 줍니다</h2>
+      <ul class="pts">
+        <li><span class="ic" data-i="trending-up"></span><span>정상·주의·위험 구간이 언제 바뀌었는지 한눈에 봅니다.</span></li>
+        <li><span class="ic" data-i="folder-down"></span><span>병원을 옮겨도 기록이 한곳에 이어집니다.</span></li>
+      </ul>
+    </div>
+    <div class="tab tall" data-a="fade" style="--d:.3"><img src="img/app-history.webp" alt="히스토리 화면"></div>
+  </div>
+</section>
+
+<!-- 9 숨은 지표 -->
+<section class="slide" data-sec="12">
+  <div class="sp">
+    <div class="tx">
+      <p class="kick">3 분석 · 숨은 지표</p>
+      <h2>결과지에 없는<br>지표 22종</h2>
+      <p class="lead">검진 수치를 묶어 계산해야 나오는 값을 자동으로 구합니다.</p>
+      <div class="chips"><span>콩팥 기능 eGFR</span><span>지방간 지수 FLI·HSI</span><span>심혈관 10년 위험</span><span>LDL 개인 목표</span></div>
+    </div>
+    <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-hidden.webp" alt="검진지에 없는 값 화면"></div>
+  </div>
+</section>
+
+<!-- 10 복약 반영 -->
+<section class="slide" data-sec="12">
+  <div class="sp">
+    <div class="tx">
+      <p class="kick">3 분석 · 복약 반영</p>
+      <h2>약 덕분에 정상인 수치는<br>따로 봅니다</h2>
+      <div class="ex">
+        <div class="q">혈압약을 먹고 잰 혈압</div>
+        <div class="bp">118/76<small>mmHg</small></div>
+        <div class="row"><span class="k">결과지</span><span class="v">정상</span></div>
+        <div class="row hl"><span class="k">헬스에이지</span><span class="v">대사증후군 기준의 혈압 항목에 해당</span></div>
+      </div>
+    </div>
+    <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-meds.webp" alt="복용약 정보 화면"></div>
+  </div>
+</section>
+
+<!-- 11 행동 -->
+<section class="slide" data-sec="12">
+  <div class="sp">
+    <div class="tx">
+      <p class="kick">4 행동</p>
+      <h2>다음 검진까지 무엇부터<br>할지 알려 줍니다</h2>
+      <ol class="rank">
+        <li><span class="no">1</span>유산소 운동 주 150분 이상</li>
+        <li><span class="no">2</span>체중 5% 줄이기</li>
+        <li><span class="no">3</span>술 줄이기</li>
+        <li><span class="no">4</span>담배 끊기</li>
+      </ol>
+      <p class="small-note">연구에 나온 효과 크기로 순서를 정합니다. (데모 계정 예시)</p>
+    </div>
+    <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-action.webp" alt="무엇부터 하면 되나 화면"></div>
+  </div>
+</section>
+
+<!-- 12 근거 -->
+<section class="slide" data-sec="12">
+  <div class="hd">
+    <p class="kick">근거</p>
+    <h2>근거로 판정합니다</h2>
+  </div>
+  <div class="bd" style="top:340px">
+    <div class="cards c2">
+      <div class="card"><span class="ic" data-i="file-check"></span><div><h3>학회 진료지침 7종</h3><p>판정 기준을 지침 원문과 맞췄습니다.</p></div></div>
+      <div class="card"><span class="ic" data-i="pill"></span><div><h3>약학대학 교수 자문</h3><p>복약을 반영하는 기준에 자문을 받았습니다.</p></div></div>
+      <div class="card"><span class="ic" data-i="users"></span><div><h3>기업 멘토링 3회 (㈜제우스)</h3><p>읽은 값을 사람이 확인하고 저장하도록 했습니다.</p></div></div>
+      <div class="card"><span class="ic" data-i="circle-check"></span><div><h3>실제 결과통보서로 시험</h3><p>개인정보를 가린 결과통보서에서 측정 16항목을 모두 읽었습니다.</p></div></div>
+    </div>
+    <p class="foot2">예측 모델이 아니라 <b class="g">공단 통계와 진료지침</b>으로 판정합니다.<br><span class="sub">참고용이며 의학적 진단을 대신하지 않습니다.</span></p>
+  </div>
+</section>
+
+<!-- 13 체험 안내 -->
+<section class="slide" data-sec="10">
+  <div class="hd">
+    <p class="kick">체험</p>
+    <h2>옆 태블릿에서 직접 해 보세요</h2>
+  </div>
+  <div class="bd" style="top:360px">
+    <div class="steps sm">
+      <div class="step"><span class="no">1</span><span class="ic" data-i="file-check"></span><h3>샘플 검진지</h3><p>예시 결과지를<br>하나 고릅니다</p></div>
+      <span class="arr ic" data-i="chevron-right"></span>
+      <div class="step"><span class="no">2</span><span class="ic" data-i="camera"></span><h3>촬영</h3><p>태블릿으로<br>찍습니다</p></div>
+      <span class="arr ic" data-i="chevron-right"></span>
+      <div class="step"><span class="no">3</span><span class="ic" data-i="list-check"></span><h3>확인</h3><p>읽은 값을<br>확인합니다</p></div>
+      <span class="arr ic" data-i="chevron-right"></span>
+      <div class="step"><span class="no">4</span><span class="ic" data-i="report-search"></span><h3>결과</h3><p>분석 결과를<br>봅니다</p></div>
+    </div>
+    <p class="foot2"><span class="sub">관람객 본인의 결과지는 받지 않습니다.</span></p>
+  </div>
+</section>
 
 <div class="live"><i></i>LIVE</div>
 <div class="pageno">1 / 13</div>
@@ -188,14 +484,51 @@ svg [data-a]{transform-box:fill-box;transform-origin:center}
 </script>
 
 <script>
+/* ── 선 아이콘 (Tabler Icons, MIT) ── */
+(function () {
+  const ICONS = {
+    'trending-up': '<path d="M3 17l6 -6l4 4l8 -8"/><path d="M14 7l7 0l0 7"/>',
+    'users': '<path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/>',
+    'report-search': '<path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"/><path d="M18 12v-5a2 2 0 0 0 -2 -2h-2"/><path d="M8 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2"/><path d="M8 11h4"/><path d="M8 15h3"/><path d="M14 17.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"/><path d="M18.5 19.5l2.5 2.5"/>',
+    'camera': '<path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"/><path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>',
+    'list-check': '<path d="M3.5 5.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 11.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 17.5l1.5 1.5l2.5 -2.5"/><path d="M11 6l9 0"/><path d="M11 12l9 0"/><path d="M11 18l9 0"/>',
+    'flag': '<path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9"/><path d="M5 21v-7"/>',
+    'chevron-right': '<path d="M9 6l6 6l-6 6"/>',
+    'file-check': '<path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 15l2 2l4 -4"/>',
+    'circle-check': '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M9 12l2 2l4 -4"/>',
+    'folder-down': '<path d="M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5"/><path d="M19 16v6"/><path d="M22 19l-3 3l-3 -3"/>',
+    'pill': '<path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7"/><path d="M8.5 8.5l7 7"/>',
+  };
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const p = ICONS[el.dataset.i];
+    if (p) el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">' + p + '</svg>';
+  });
+  /* 장마다 블록이 차례로 들어오게 순서를 매김 */
+  const SEL = '.org,h1,.kor,.tag,.team,.chip,.kick,h2,.lead,.pts li,.bar,.card,.step,.arr,.big,.chips span,.ex,.rank li,.small-note,.note,.foot2';
+  document.querySelectorAll('.slide').forEach(sl => {
+    let i = 0;
+    sl.querySelectorAll(SEL).forEach(el => {
+      if (el.hasAttribute('data-a') || el.parentElement.closest('[data-a]')) return;
+      el.setAttribute('data-a', 'up');
+      el.style.setProperty('--d', Math.min(0.1 + i * 0.12, 2.0).toFixed(2));
+      i++;
+    });
+  });
+})();
+</script>
+
+<script>
 /* ── 움직임: 장이 열릴 때 숫자를 0부터 올리고 slideon 알림 ── */
 (function () {
   const nums = [...document.querySelectorAll('[data-n]')].map(el => ({
     el, t: parseFloat(el.dataset.n), dec: +(el.dataset.dec || 0), sl: el.closest('.slide'),
     d: parseFloat((el.closest('[data-a]') || el).style.getPropertyValue('--d')) || 0,
   }));
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt = (n, v) => v.toLocaleString('en-US', { minimumFractionDigits: n.dec, maximumFractionDigits: n.dec });
   function run(sl) {
     nums.filter(n => n.sl === sl).forEach(n => {
+      if (still) { n.el.textContent = fmt(n, n.t); return; }
       n.el.textContent = (0).toFixed(n.dec);
       const t0 = performance.now() + n.d * 1000 + 150, dur = 1100;
       const step = now => {

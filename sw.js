@@ -1,13 +1,24 @@
 /* 인터넷 없이 열기: 첫 접속 때 모든 파일을 저장해 둔다.
    첫 화면은 인터넷 우선(3초 안에 안 오면 저장본), 나머지는 저장본 우선.
    내용을 바꾸면 VERSION을 올린다. */
-const VERSION = 'v1';
+const VERSION = 'v2';
 const FILES = [
   './',
   './index.html',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png',
+  './fonts/Pretendard-subset-400.woff2',
+  './fonts/Pretendard-subset-700.woff2',
+  './img/app-home.webp',
+  './img/app-items.webp',
+  './img/app-history.webp',
+  './img/app-analysis.webp',
+  './img/app-hidden.webp',
+  './img/app-peer.webp',
+  './img/app-action.webp',
+  './img/app-upload.webp',
+  './img/app-meds.webp',
 ];
 const PAGE = './index.html';
 const WAIT_MS = 3000;
