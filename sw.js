@@ -1,7 +1,7 @@
 /* 인터넷 없이 열기: 첫 접속 때 모든 파일을 저장해 둔다.
    첫 화면은 인터넷 우선(3초 안에 안 오면 저장본), 나머지는 저장본 우선.
    VERSION과 FILES는 tools/build.py가 쓴다. */
-const VERSION = '63a8cfa7';
+const VERSION = '5c480bd1';
 const FILES = [
   './',
   './fonts/Pretendard-400.37869e06.woff2',
