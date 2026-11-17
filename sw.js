@@ -1,19 +1,19 @@
 /* 인터넷 없이 열기: 첫 접속 때 모든 파일을 저장해 둔다.
    첫 화면은 인터넷 우선(3초 안에 안 오면 저장본), 나머지는 저장본 우선.
    VERSION과 FILES는 tools/build.py가 쓴다. */
-const VERSION = '489209cb';
+const VERSION = '8a1cada4';
 const FILES = [
   './',
-  './fonts/Pretendard-400.ee49dd26.woff2',
-  './fonts/Pretendard-700.2e30b879.woff2',
+  './fonts/Pretendard-400.92ae484f.woff2',
+  './fonts/Pretendard-700.c2a97825.woff2',
   './icon-192.png',
   './icon-512.png',
-  './img/app-action.webp',
-  './img/app-hidden.webp',
+  './img/app-action-full.webp',
+  './img/app-hidden-full.webp',
   './img/app-history.webp',
   './img/app-home.webp',
-  './img/app-meds-2.webp',
-  './img/app-peer.webp',
+  './img/app-meds-full.webp',
+  './img/app-peer-full.webp',
   './img/app-upload.webp',
   './index.html',
   './manifest.webmanifest',
