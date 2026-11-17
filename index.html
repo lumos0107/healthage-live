@@ -4,14 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="only light">
+<meta name="build" content="489209cb">
 <meta name="theme-color" content="#0D7B57">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <title>HealthAge · CO-SHOW B-03</title>
 <style>
 /* Pretendard (SIL Open Font License 1.1) · 슬라이드에 쓰인 글자만 잘라 넣음: tools/subset_font.py */
-@font-face{font-family:'Pretendard';font-style:normal;font-weight:400;font-display:block;src:url(fonts/Pretendard-subset-400.woff2) format('woff2')}
-@font-face{font-family:'Pretendard';font-style:normal;font-weight:700;font-display:block;src:url(fonts/Pretendard-subset-700.woff2) format('woff2')}
+@font-face{font-family:'Pretendard';font-style:normal;font-weight:400;font-display:block;src:url(fonts/Pretendard-400.ee49dd26.woff2) format('woff2')}
+@font-face{font-family:'Pretendard';font-style:normal;font-weight:700;font-display:block;src:url(fonts/Pretendard-700.2e30b879.woff2) format('woff2')}
 :root{
   --green:#0D7B57;  /* 주요색 (부스 픽토그램 규칙) */
   --gray:#C6C8C7;   /* 보조색 */
@@ -23,6 +25,8 @@
   --line:#E4E6E5;   /* 구분선 */
 }
 html,body{margin:0;height:100%;background:var(--bg);overflow:hidden;overscroll-behavior:none;touch-action:none}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;color-scheme:only light}
+img{pointer-events:none;-webkit-user-drag:none}
 body{font-family:Pretendard,"Malgun Gothic",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
   user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;
   word-break:keep-all;font-variant-ligatures:none;cursor:pointer}
@@ -121,8 +125,8 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
 .card .ic{width:72px;height:72px;color:var(--green)}
 .card h3{margin:26px 0 14px;font-size:48px;font-weight:700;letter-spacing:-.8px}
 .card p{margin:0;font-size:36px;line-height:1.45;color:var(--sub)}
-.cards.c2 .card{display:flex;gap:34px;align-items:flex-start;padding:40px 44px}
-.cards.c2 .card h3{margin:0 0 10px;font-size:44px}
+.cards.c2 .card{display:flex;gap:34px;align-items:center;padding:48px 48px}
+.cards.c2 .card h3{margin:0;font-size:48px}
 .foot2{margin-top:48px;font-size:38px;line-height:1.5}
 .foot2 .sub{color:var(--sub);font-size:36px}
 
@@ -187,12 +191,12 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   <div class="hd">
     <p class="kick">문제</p>
     <h2>검진 결과는 서랍으로 갑니다</h2>
-    <p class="lead">건강검진을 받아 본 64명에게 결과지를 어떻게 두는지 물었습니다.</p>
+    <p class="lead">건강검진을 받아 본 64명에게 물었습니다.</p>
   </div>
   <div class="bd">
     <div class="bars">
       <div class="bar"><div class="lb"><span>종이로만 두거나 관리하지 않아요</span><span class="v"><span data-n="84">84</span><small>%</small></span></div><div class="tr"><div class="fl" style="--w:84%"></div></div></div>
-      <div class="bar alt"><div class="lb"><span>결과지를 다시 읽지 않아요</span><span class="v"><span data-n="44">44</span><small>%</small></span></div><div class="tr"><div class="fl" style="--w:44%"></div></div></div>
+      <div class="bar alt"><div class="lb"><span>결과지를 거의 다시 읽지 않아요</span><span class="v"><span data-n="44">44</span><small>%</small></span></div><div class="tr"><div class="fl" style="--w:44%"></div></div></div>
     </div>
   </div>
   <p class="src">출처: 일반인 설문(2026), 검진 경험자 64명</p>
@@ -203,7 +207,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   <div class="hd">
     <p class="kick">문제</p>
     <h2>수치만 있고 설명이 없습니다</h2>
-    <p class="lead">결과지를 그대로 두는 이유를 물었습니다. (62명, 복수 응답)</p>
+    <p class="lead">결과지를 읽지 않거나 이해하기 어려웠던 이유 (62명, 복수 응답)</p>
   </div>
   <div class="bd">
     <div class="bars">
@@ -222,9 +226,9 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   </div>
   <div class="bd" style="top:360px">
     <div class="cards">
-      <div class="card"><span class="ic" data-i="trending-up"></span><h3>작년과 비교</h3><p>올해 값만 적혀 있어 좋아졌는지 나빠졌는지 알기 어렵습니다.</p></div>
-      <div class="card"><span class="ic" data-i="users"></span><h3>또래 속 내 위치</h3><p>같은 나이·성별 사이에서 내가 어디쯤인지 알 수 없습니다.</p></div>
-      <div class="card"><span class="ic" data-i="report-search"></span><h3>계산해야 나오는 지표</h3><p>여러 수치를 묶어 계산해야 보이는 값은 적혀 있지 않습니다.</p></div>
+      <div class="card"><span class="ic" data-i="trending-up"></span><h3>작년과 비교</h3><p>올해 값만 적혀 있습니다.</p></div>
+      <div class="card"><span class="ic" data-i="users"></span><h3>또래 속 내 위치</h3><p>같은 연령대·성별 속 위치는 없습니다.</p></div>
+      <div class="card"><span class="ic" data-i="report-search"></span><h3>계산해야 나오는 지표</h3><p>수치를 묶어야 보이는 값은 없습니다.</p></div>
     </div>
     <p class="note">헬스에이지는 이 세 가지를 <b class="g">자동으로 더합니다.</b></p>
   </div>
@@ -244,7 +248,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
       <span class="arr ic" data-i="chevron-right"></span>
       <div class="step"><span class="no">3</span><span class="ic" data-i="report-search"></span><h3>분석</h3><p>또래 비교, 연도별 변화,<br>숨은 지표를 봅니다</p></div>
       <span class="arr ic" data-i="chevron-right"></span>
-      <div class="step"><span class="no">4</span><span class="ic" data-i="flag"></span><h3>행동</h3><p>다음 검진까지<br>챙길 일을 알려 줍니다</p></div>
+      <div class="step"><span class="no">4</span><span class="ic" data-i="flag"></span><h3>행동</h3><p>다음 검진까지 챙길 일을<br>알려 줍니다</p></div>
     </div>
   </div>
 </section>
@@ -270,7 +274,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   <div class="sp">
     <div class="tx">
       <p class="kick">3 분석 · 또래 비교</p>
-      <h2>같은 나이·성별<br>또래와 비교합니다</h2>
+      <h2>같은 연령대·성별<br>또래와 비교합니다</h2>
       <div class="big"><div class="n"><span data-n="1596">1,596</span><small>만 건</small></div><div class="u">국민건강보험공단 검진 표본 (2009~2024년)</div></div>
       <p class="lead">내 수치가 또래 100명 중 몇 등쯤인지 보여 줍니다.</p>
     </div>
@@ -283,7 +287,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   <div class="sp">
     <div class="tx">
       <p class="kick">3 분석 · 연도별 변화</p>
-      <h2>해마다 바뀐 구간을<br>보여 줍니다</h2>
+      <h2>해마다 어떻게 바뀌었는지<br>보여 줍니다</h2>
       <ul class="pts">
         <li><span class="ic" data-i="trending-up"></span><span>정상·주의·위험 구간이 언제 바뀌었는지 한눈에 봅니다.</span></li>
         <li><span class="ic" data-i="folder-down"></span><span>병원을 옮겨도 기록이 한곳에 이어집니다.</span></li>
@@ -300,7 +304,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
       <p class="kick">3 분석 · 숨은 지표</p>
       <h2>결과지에 없는<br>지표 22종</h2>
       <p class="lead">검진 수치를 묶어 계산해야 나오는 값을 자동으로 구합니다.</p>
-      <div class="chips"><span>콩팥 기능 eGFR</span><span>지방간 지수 FLI·HSI</span><span>심혈관 10년 위험</span><span>LDL 개인 목표</span></div>
+      <div class="chips"><span>인슐린 저항성 TyG</span><span>지방간 지수 FLI·HSI</span><span>심혈관 10년 위험</span><span>LDL 개인 목표</span></div>
     </div>
     <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-hidden.webp" alt="검진지에 없는 값 화면"></div>
   </div>
@@ -315,11 +319,11 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
       <div class="ex">
         <div class="q">혈압약을 먹고 잰 혈압</div>
         <div class="bp">118/76<small>mmHg</small></div>
-        <div class="row"><span class="k">결과지</span><span class="v">정상</span></div>
-        <div class="row hl"><span class="k">헬스에이지</span><span class="v">대사증후군 기준의 혈압 항목에 해당</span></div>
+        <div class="row"><span class="k">수치만 보면</span><span class="v">정상 범위 (120/80 미만)</span></div>
+        <div class="row hl"><span class="k">헬스에이지</span><span class="v">혈압 위험 인자로 셉니다 (대사증후군 기준)</span></div>
       </div>
     </div>
-    <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-meds.webp" alt="복용약 정보 화면"></div>
+    <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-meds-2.webp" alt="복용약 정보 화면"></div>
   </div>
 </section>
 
@@ -335,7 +339,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
         <li><span class="no">3</span>술 줄이기</li>
         <li><span class="no">4</span>담배 끊기</li>
       </ol>
-      <p class="small-note">연구에 나온 효과 크기로 순서를 정합니다. (데모 계정 예시)</p>
+      <p class="small-note">대사증후군 수치를 크게 움직이는 순서입니다. 의학적 우선순위는 아닙니다. (데모 계정 예시)</p>
     </div>
     <div class="tab wide" data-a="fade" style="--d:.3"><img src="img/app-action.webp" alt="무엇부터 하면 되나 화면"></div>
   </div>
@@ -349,10 +353,10 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   </div>
   <div class="bd" style="top:340px">
     <div class="cards c2">
-      <div class="card"><span class="ic" data-i="file-check"></span><div><h3>학회 진료지침 7종</h3><p>판정 기준을 지침 원문과 맞췄습니다.</p></div></div>
-      <div class="card"><span class="ic" data-i="pill"></span><div><h3>약학대학 교수 자문</h3><p>복약을 반영하는 기준에 자문을 받았습니다.</p></div></div>
-      <div class="card"><span class="ic" data-i="users"></span><div><h3>기업 멘토링 3회 (㈜제우스)</h3><p>읽은 값을 사람이 확인하고 저장하도록 했습니다.</p></div></div>
-      <div class="card"><span class="ic" data-i="circle-check"></span><div><h3>실제 결과통보서로 시험</h3><p>개인정보를 가린 결과통보서에서 측정 16항목을 모두 읽었습니다.</p></div></div>
+      <div class="card"><span class="ic" data-i="file-check"></span><h3>학회 진료지침 7종</h3></div>
+      <div class="card"><span class="ic" data-i="pill"></span><h3>약학대학 교수 자문</h3></div>
+      <div class="card"><span class="ic" data-i="users"></span><h3>기업 멘토링 3회 · ㈜제우스</h3></div>
+      <div class="card"><span class="ic" data-i="circle-check"></span><h3>실제 결과통보서로 판독 시험</h3></div>
     </div>
     <p class="foot2">예측 모델이 아니라 <b class="g">공단 통계와 진료지침</b>으로 판정합니다.<br><span class="sub">참고용이며 의학적 진단을 대신하지 않습니다.</span></p>
   </div>
@@ -366,7 +370,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   </div>
   <div class="bd" style="top:360px">
     <div class="steps sm">
-      <div class="step"><span class="no">1</span><span class="ic" data-i="file-check"></span><h3>샘플 검진지</h3><p>예시 결과지를<br>하나 고릅니다</p></div>
+      <div class="step"><span class="no">1</span><span class="ic" data-i="file-check"></span><h3>샘플 검진지</h3><p>준비된 예시<br>결과지를 씁니다</p></div>
       <span class="arr ic" data-i="chevron-right"></span>
       <div class="step"><span class="no">2</span><span class="ic" data-i="camera"></span><h3>촬영</h3><p>태블릿으로<br>찍습니다</p></div>
       <span class="arr ic" data-i="chevron-right"></span>
@@ -381,7 +385,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
 <div class="live"><i></i>LIVE</div>
 <div class="pageno">1 / 13</div>
 <div class="progress"><i></i></div>
-<div id="pausemark">일시정지</div>
+<div id="pausemark">일시정지 · 판 <span id="ver"></span></div>
 </div>
 
 <script>
@@ -395,7 +399,9 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
   const bar = document.querySelector('.progress>i');
   const pageno = document.querySelector('.pageno');
   const LONG_MS = 2000, CORNER = 120;                                /* 왼쪽 위 길게 누르기 = 일시정지 */
-  let cur = 0, paused = false, timer = null;
+  const PAUSE_MAX = 180000 / speed;                                  /* 멈춘 지 3분이면 저절로 다시 재생 */
+  const SWIPE = 60;                                                  /* 이만큼 밀면 방향으로 넘김 */
+  let cur = 0, paused = false, timer = null, resumeTimer = null;
 
   function fit() {
     const s = Math.min(innerWidth / 1920, innerHeight / 1080);
@@ -416,13 +422,18 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
     slides.forEach((el, k) => el.classList.toggle('on', k === cur));
     pageno.textContent = `${cur + 1} / ${N}`;
     arm();
+    wake();
   }
   function next() { show(cur + 1); }
   function prev() { show(cur - 1); }
   function togglePause() {
     paused = !paused;
     document.body.classList.toggle('paused', paused);
-    if (paused) { clearTimeout(timer); timer = null; } else arm();
+    clearTimeout(resumeTimer); resumeTimer = null;
+    if (paused) {
+      clearTimeout(timer); timer = null;
+      resumeTimer = setTimeout(() => { if (paused) togglePause(); }, PAUSE_MAX);
+    } else arm();
   }
 
   /* 화면 꺼짐 막기 · 전체 화면 */
@@ -442,10 +453,16 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
     }
   }
 
-  /* 누르기: 왼쪽 1/4 이전, 나머지 다음. 왼쪽 위 모서리 2초 = 일시정지 */
-  let longTimer = null, longFired = false;
+  /* 뒤로 가기 막기: 누를 때마다(사용자 동작) 기록을 하나 쌓아, 뒤로 버튼이 앱을 닫지 않고 그 기록만 지우게 함 */
+  function guardBack() {
+    if (!(history.state && history.state.guard)) history.pushState({ guard: true }, '');
+  }
+
+  /* 누르기: 왼쪽 1/4 이전, 나머지 다음. 밀면 미는 방향. 왼쪽 위 모서리 2초 = 일시정지 */
+  let longTimer = null, longFired = false, downX = null;
   addEventListener('pointerdown', e => {
     longFired = false; clearTimeout(longTimer);
+    if (e.isPrimary) downX = e.clientX;
     if (e.isPrimary && e.clientX < CORNER && e.clientY < CORNER) {
       longTimer = setTimeout(() => { longFired = true; togglePause(); }, LONG_MS);
     }
@@ -454,8 +471,12 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
     clearTimeout(longTimer);
     if (longFired) { longFired = false; return; }
     if (!e.isPrimary || e.button > 0) return;
-    goFull(); wake();
-    e.clientX < innerWidth / 4 ? prev() : next();
+    goFull(); wake(); guardBack();
+    const x0 = downX === null ? e.clientX : downX, dx = e.clientX - x0;
+    downX = null;
+    if (dx <= -SWIPE) next();
+    else if (dx >= SWIPE) prev();
+    else x0 < innerWidth / 4 ? prev() : next();
   });
   addEventListener('pointercancel', () => clearTimeout(longTimer));
   addEventListener('contextmenu', e => e.preventDefault());
@@ -477,6 +498,7 @@ h1,h2,.lead,.pts li span,.card p,.step p,.ex .v,.foot2,.small-note{text-wrap:bal
     get cur() { return cur; }, get paused() { return paused; },
     show, next, prev, togglePause,
   };
+  document.getElementById('ver').textContent = document.querySelector('meta[name="build"]').content;
   fit();
   show(Math.max((parseInt(location.hash.slice(1)) || 1) - 1, 0));   /* #5 = 5장부터 (캡처용) */
   wake();
