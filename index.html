@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="only light">
-<meta name="build" content="e734484d">
+<meta name="build" content="2d83531e">
 <meta name="theme-color" content="#126E4C">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
@@ -60,9 +60,6 @@ body.paused .live .t2{display:inline}
 .progress>i.run{animation:prog linear forwards;animation-duration:var(--dur,10s)}
 @keyframes prog{from{width:0}to{width:100%}}
 body.paused .progress>i{animation-play-state:paused}
-#pausemark{position:absolute;left:40px;top:40px;display:none;align-items:center;gap:12px;padding:10px 22px;border-radius:40px;
-  background:rgba(4,40,22,.08);color:var(--sub);font-size:24px;font-weight:700;z-index:6}
-body.paused #pausemark{display:flex}
 
 /* ── 등장 움직임 (중간보고_1112.html에서 가져옴) ── */
 [data-a]{opacity:0}
@@ -231,7 +228,6 @@ h1,h2,.lead,.pts li span,.col p,.step p,.foot2,.small-note,.cap{text-wrap:balanc
       <div class="rule"></div>
       <p class="tag">사진 한 장으로 읽는<br>건강검진 아카이브</p>
       <p class="team">제주대학교 컴퓨터공학전공 코드짜는 한라봉<br>강승준 · 고강혁 · 양인권</p>
-      <span class="chip">부스 B-03</span>
     </div>
     <div class="tab" data-a="fade" style="--d:.3"><img src="img/app-home.webp" alt="헬스에이지 홈 화면"></div>
   </div>
@@ -501,7 +497,6 @@ h1,h2,.lead,.pts li span,.col p,.step p,.foot2,.small-note,.cap{text-wrap:balanc
 <div class="live" role="button" aria-label="자동 넘김 멈춤 또는 다시 재생"><i></i><span class="pz"><b></b><b></b></span><span class="t1">LIVE</span><span class="t2">멈춤</span></div>
 <div class="pageno">1 / 13</div>
 <div class="progress"><i></i></div>
-<div id="pausemark">판 <span id="ver"></span></div>
 </div>
 
 <script>
@@ -615,7 +610,6 @@ h1,h2,.lead,.pts li span,.col p,.step p,.foot2,.small-note,.cap{text-wrap:balanc
     get cur() { return cur; }, get paused() { return paused; },
     show, next, prev, togglePause,
   };
-  document.getElementById('ver').textContent = document.querySelector('meta[name="build"]').content;
   fit();
   show(Math.max((parseInt(location.hash.slice(1)) || 1) - 1, 0));   /* #5 = 5장부터 (캡처용) */
   wake();
